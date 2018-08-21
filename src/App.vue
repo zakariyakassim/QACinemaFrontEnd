@@ -1,5 +1,6 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
   <div id="app">
+
     <div id="topBanner">
       <img id="logo" src="./assets/logo3.png" v-on:click="makeActive('/')">
       <ul id="account">
@@ -30,6 +31,7 @@
     <router-view/>
   </div>
 </template>
+
 <script>
 import router from './router'
 import icons from 'glyphicons'
@@ -39,7 +41,8 @@ export default {
   data () {
     return {
       active: '',
-      icons
+      icons,
+      showModal: false
     }
   },
   methods: {
@@ -128,7 +131,7 @@ float: right;
     -webkit-box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
     -moz-box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
     box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
-    z-index: 1000;
+    z-index: 1;
   }
 
   nav a{

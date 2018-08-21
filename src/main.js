@@ -9,6 +9,17 @@ import Vuetify from 'vuetify'
 import BootstrapVue from 'bootstrap-vue'
 import VueCarousel from 'vue-carousel'
 import icons from 'glyphicons'
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
+// Vue.use(VueAxios, axios)
+import VModal from 'vue-js-modal'
+import StarRating from 'vue-star-rating'
+Vue.use(StarRating)
+
+Vue.use(VModal, {
+  dialog: true,
+  dynamic: true
+})
 Vue.use(icons)
 Vue.use(VueCarousel)
 Vue.use(BootstrapVue)
