@@ -2,18 +2,18 @@
   <div id="app">
 
     <div id="topBanner">
-      <img id="logo" src="./assets/logo3.png" v-on:click="makeActive('/')">
+      <img id="logo" src="./assets/logo.png" v-on:click="makeActive('/')">
       <ul id="account">
-        <li>Login</li>
-        <li>Register</li>
+        <li v-on:click="signIn">{{userEvent}}</li>
+        <li v-on:click="signUp">Register</li>
         <li>
 
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search">
-              <span class="input-group-btn">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-btn">
         <button class="btn btn-default" type="button">Go!</button>
       </span>
-            </div><!-- /input-group -->
+          </div><!-- /input-group -->
 
         </li>
       </ul>
@@ -22,9 +22,12 @@
 
     <div id="main">
       <nav v-bind:class="active" v-on:click.prevent>
-        <a href="#" class="whatson" v-on:click="makeActive('whatson')">What's On</a>
-        <a href="#" class="comingsoon" v-on:click="makeActive('comingsoon')">Coming Soon</a>
-        <a href="#" class="help" v-on:click="makeActive('help')">Help</a>
+        <a href="" class="whatson" v-on:click="makeActive('whatson')">What's On</a>
+        <a href="" class="comingsoon" v-on:click="makeActive('comingsoon')">Coming Soon</a>
+        <a href="" class="information" v-on:click="makeActive('information')">Information</a>
+        <a href="" class="location" v-on:click="makeActive('location')">Location</a>
+        <a href="" class="filmclassification" v-on:click="makeActive('filmclassification')">Film Classifications</a>
+        <a href="" class="aboutus" v-on:click="makeActive('aboutus')">About Us</a>
       </nav>
       <!-- <p>You chose <b>{{ active }}</b></p> -->
     </div>
@@ -42,10 +45,34 @@ export default {
     return {
       active: '',
       icons,
-      showModal: false
+      showModal: false,
+      userEvent: '',
+      userId: ''
+    }
+  },
+  created () {
+    if (this.userId !== '') {
+      this.userEvent = 'Sign Out'
+    } else {
+      this.userEvent = 'Sign In'
     }
   },
   methods: {
+    signIn: function (event) {
+      if (this.userId !== '') {
+        this.userEvent = 'Sign Out'
+        this.userId = ''
+      } else {
+        this.userEvent = 'Sign In'
+        router.push('Login')
+      }
+    },
+    signUp: function () {
+      router.push('Reg')
+    },
+    signOut: function () {
+
+    },
     makeActive: function (item) {
       router.push(item)
       this.active = item
@@ -69,35 +96,38 @@ export default {
   }
 
   #account {
-float: right;
+    float: right;
     margin-top: 40px;
     margin-right: 20px;
   }
-#account li {
-  display: inline-block;
-  text-decoration: none;
-  color: white;
-  font-size: 15px;
-  font-weight: lighter;
-  width: 80px;
-}
+  #account li {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: lighter;
+    width: 80px;
+  }
   #account li:first-child {
     border-right: #b2b2b2 1px solid;
     margin-right: 10px;
   }
-#account li:last-child {
-  width: 250px;
-  margin-right: 50px;
-}
-#account li:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
+  #account li:last-child {
+    width: 250px;
+    margin-right: 50px;
+  }
+  #account li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
   body{
     font:15px/1.3 'Open Sans', sans-serif;
     color: #000000;
     text-align:center;
-    background-color: black;
+  //background-color: white;
+    background-image: url("assets/background2.jpg");
+    background-repeat: repeat-y;
+    background-size: 100%;
   }
 
   a, a:visited {
@@ -107,7 +137,7 @@ float: right;
 
   a:hover{
     text-decoration:none;
-    background-color:#e35885;
+    background-color:#389dc1;
   }
 
   section, footer, header, aside, nav{
@@ -124,13 +154,14 @@ float: right;
     margin-bottom: 0px;
     float: bottom;
     background-color: #005baa;
-    //opacity: 0.5;
-    //box-shadow:0 1px 1px #ccc;
+    height: 60px;
+  //opacity: 0.5;
+  //box-shadow:0 1px 1px #ccc;
     border-radius:0px;
     width: 100%;
-    -webkit-box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
-    -moz-box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
-    box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 5px 9px 2px rgba(0,0,0,0.66);
+    -moz-box-shadow: 0px 5px 9px 2px rgba(0,0,0,0.66);
+    box-shadow: 0px 5px 9px 2px rgba(0,0,0,0.66);
     z-index: 1;
   }
 
@@ -139,9 +170,10 @@ float: right;
     padding: 18px 30px;
     color:#fff !important;
     font-weight:lighter;
-    font-size:12px;
+    font-size:18px;
     text-decoration:none !important;
-    line-height:1;
+    line-height:1.3;
+    height: 60px;
     text-transform: uppercase;
     background-color:transparent;
     -webkit-transition:background-color 0.25s;
@@ -180,7 +212,7 @@ float: right;
   #topBanner {
     width: 100%;
     height: 110px;
-    background: black;
+    background: none;
   }
 
 </style>

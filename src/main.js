@@ -9,9 +9,7 @@ import Vuetify from 'vuetify'
 import BootstrapVue from 'bootstrap-vue'
 import VueCarousel from 'vue-carousel'
 import icons from 'glyphicons'
-// import axios from 'axios'
-// import VueAxios from 'vue-axios'
-// Vue.use(VueAxios, axios)
+import 'vuetify/dist/vuetify.min.css'
 import VModal from 'vue-js-modal'
 import StarRating from 'vue-star-rating'
 Vue.use(StarRating)

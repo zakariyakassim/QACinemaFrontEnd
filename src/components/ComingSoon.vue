@@ -8,15 +8,14 @@
 
         <img v-bind:src="imageLink+this.movie.poster_path" class="modalPoster">
         <div class="modalInfo">
-          <p>Starring:</p>
+            <p> Starring:</p>
           <p class="modalMovieCast" v-for="castMember in this.credits.slice(0,5)" v-bind:key="castMember.name">{{castMember.name}}</p>
           <p>Runtime:</p>
-          <span class="modalMovieTime" v-bind:key="min.runtime">{{min.runtime}} min </span>
-          <br><star-rating text-class="custom-text" :read-only=true :star-size="30" :rounded-corners=false :padding="0" :rating="movie.vote_average" style="margin-top: 10px"></star-rating>
+            <span class="modalMovieTime" v-bind:key="min.runtime">{{min.runtime}} min </span>
         </div>
-
+        <div>
         <p class="modalMovieOverview">{{this.movie.overview}}</p>
-        <input type="button" class="modalBookButton" v-on:click="bookEvent" value="BOOK">
+        </div>
         </div>
       </modal>
       <ul style="width:100%">
@@ -24,7 +23,7 @@
           <div class="container">
             <img v-bind:src="imageLink+movie.poster_path" alt="" class="image" style="width:100%">
             <div class="middle">
-              <div class="text" @click="show(movie)">BOOK</div>
+              <div class="text" @click="show(movie)" >MORE</div>
             </div>
           </div>
         </li>
@@ -37,10 +36,11 @@
 import TheMovieDB from '@/services/api/TheMovieDB'
 import StarRating from 'vue-star-rating'
 export default {
+  name: 'ComingSoon',
   components: {
     StarRating
   },
-  name: 'WhatsOn',
+  name: 'ComingSoon',
   data () {
     return {
       movies: [],
@@ -48,24 +48,22 @@ export default {
       movie: {},
       credits: [],
       min: []
+
     }
   },
   created () {
-    TheMovieDB.getMovies().then(movies => {
+    TheMovieDB.getMoviesComingSoon().then(movies => {
       this.movies = movies
     })
   },
+
   methods: {
-    bookEvent: function () {
-      this.$router.push('book')
+    beforeOpen: function () {
     },
     more: function () {
       this.$router.push('modal')
     },
     show (movie) {
-      /* TheMovieDB.getMovies().then(movies => {
-        this.movieTitle = movies.length
-      }) */
       this.movie = movie
       this.$modal.show('foo')
       TheMovieDB.getCredits(movie.id).then(credits => {
@@ -78,9 +76,9 @@ export default {
     hide () {
       this.$modal.hide('hello')
     }
-
   }
 }
+
 </script>
 
 <style scoped>
@@ -90,6 +88,7 @@ export default {
     border: 1px solid #cfcfcf;
     padding-left: 10px;
     padding-right: 10px;
+
     border-radius: 5px;
     color: #999;
     background: #fff;
@@ -100,20 +99,11 @@ export default {
     width: 900px;
     background-color: #00386b;
   }
-  .modalBookButton {
-    margin-top: 1%;
-    margin-left: 60%;
-    height: 40px;
-    width: 130px;
-    border-width: 0;
-    border-radius: 0;
-    background-color: #005baa;
-    color: white;
-  }
+
   .modalInfo {
     display:inline-block;
     width: 600px;
-    margin-left: 30px;
+    margin-left: 20px;
     height: 300px;
     position: absolute;
     margin-top: 20px;
@@ -138,12 +128,12 @@ border-bottom: black 1px solid;
     margin-top: 40px;
     color: white;
   }
-      .modalMovieCast {
+    .modalMovieCast {
     font-size: 15px;
     font-weight: lighter;
     margin-left: 10px;
     margin-right: 10px;
-    /* margin-top: 10px; */
+    margin-top: 10px;
     color: white;
   }
       .modalMovieTime {
@@ -164,7 +154,7 @@ border-bottom: black 1px solid;
 }
   ul {
     margin-top: 50px;
-    /* border: white 2px solid; */
+  /* border: white 2px solid; */
   }
 
   ul li {
@@ -180,7 +170,6 @@ border-bottom: black 1px solid;
     margin: 0;
     position: relative;
     width: 100%;
-
   }
 
   .image {
