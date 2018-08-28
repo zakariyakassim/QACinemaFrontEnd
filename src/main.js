@@ -6,14 +6,15 @@ import router from './router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Vuetify from 'vuetify'
+import '../node_modules/vuetify/dist/vuetify.min.css'
+import '../node_modules/vuetify/dist/vuetify.css'
+import '../node_modules/vuetify/dist/vuetify.min'
 import BootstrapVue from 'bootstrap-vue'
 import VueCarousel from 'vue-carousel'
 import icons from 'glyphicons'
-// import axios from 'axios'
-// import VueAxios from 'vue-axios'
-// Vue.use(VueAxios, axios)
 import VModal from 'vue-js-modal'
 import StarRating from 'vue-star-rating'
+
 Vue.use(StarRating)
 
 Vue.use(VModal, {

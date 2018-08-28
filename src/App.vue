@@ -2,7 +2,7 @@
   <div id="app">
 
     <div id="topBanner">
-      <img id="logo" src="./assets/logo3.png" v-on:click="makeActive('/')">
+      <img id="logo" src="./assets/logo.png" v-on:click="makeActive('/')">
       <ul id="account">
         <li>Login</li>
         <li>Register</li>
@@ -97,7 +97,10 @@ float: right;
     font:15px/1.3 'Open Sans', sans-serif;
     color: #000000;
     text-align:center;
-    background-color: black;
+    //background-color: white;
+    background-image: url("assets/background2.jpg");
+    background-repeat: repeat-y;
+    background-size: 100%;
   }
 
   a, a:visited {
@@ -107,7 +110,7 @@ float: right;
 
   a:hover{
     text-decoration:none;
-    background-color:#e35885;
+    background-color:#389dc1;
   }
 
   section, footer, header, aside, nav{
@@ -124,13 +127,14 @@ float: right;
     margin-bottom: 0px;
     float: bottom;
     background-color: #005baa;
+    height: 60px;
     //opacity: 0.5;
     //box-shadow:0 1px 1px #ccc;
     border-radius:0px;
     width: 100%;
-    -webkit-box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
-    -moz-box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
-    box-shadow: 0px -3px 8px 4px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 5px 9px 2px rgba(0,0,0,0.66);
+    -moz-box-shadow: 0px 5px 9px 2px rgba(0,0,0,0.66);
+    box-shadow: 0px 5px 9px 2px rgba(0,0,0,0.66);
     z-index: 1;
   }
 
@@ -139,9 +143,10 @@ float: right;
     padding: 18px 30px;
     color:#fff !important;
     font-weight:lighter;
-    font-size:12px;
+    font-size:18px;
     text-decoration:none !important;
-    line-height:1;
+    line-height:1.3;
+    height: 60px;
     text-transform: uppercase;
     background-color:transparent;
     -webkit-transition:background-color 0.25s;
@@ -180,7 +185,7 @@ float: right;
   #topBanner {
     width: 100%;
     height: 110px;
-    background: black;
+    background: none;
   }
 
 </style>

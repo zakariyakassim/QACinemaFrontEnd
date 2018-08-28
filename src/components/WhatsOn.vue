@@ -1,6 +1,6 @@
 <template>
   <v-layout justify-center>
-    <v-flex xs12 sm10 md8 lg6>
+    <v-flex >
 
       <modal name="foo" :width="900" :height="600" @before-open="beforeOpen">
         <div class="modalContainer">
